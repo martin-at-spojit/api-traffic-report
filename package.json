@@ -1,0 +1,31 @@
+{
+  "name": "api-traffic-report",
+  "version": "1.0.0",
+  "description": "CLI that reads a JSONL log of API requests and prints a single JSON traffic report to stdout",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "bin": {
+    "api-traffic-report": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "pnpm build && vitest run",
+    "bench": "node scripts/bench.mjs"
+  },
+  "packageManager": "pnpm@11.4.0",
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@types/node": "^24.13.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
